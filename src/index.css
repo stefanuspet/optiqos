@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #800000; /* Merah Maroon */
+}
+
+.login-container,
+.dashboard-container,
+.data-container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #303030; /* Abu-Abu Tua */
+  color: #ffffff;
+  text-align: center;
+  border-radius: 10px;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 75%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #404040; /* Hitam */
+  color: #fff;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555; /* Abu-Abu */
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #666;
+}
+
+.data-container {
+  width: 80%; /* Sesuaikan dengan kebutuhan ukuran container data */
+  margin: 50px auto; /* Sesuaikan dengan kebutuhan margin */
+  position: relative;
+}
+
+.data-box {
+  width: 100%;
+  background-color: #505050; /* Abu-Abu Lebih Gelap */
+  position: relative;
+}
+
+#deleteDataBtn,
+#backBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: auto;
+  padding: 5px;
+  font-size: 12px;
+}
+
+#backBtn {
+  top: 40px; /* Menyesuaikan posisi "Kembali" lebih tinggi dari "Hapus Data" */
+}
