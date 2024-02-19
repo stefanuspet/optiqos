@@ -1,9 +1,56 @@
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { IoClose } from "react-icons/io5";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 
 const InputData = () => {
+  const options = [
+    {
+      value: "",
+      label: "Pilih Central Office",
+    },
+    {
+      value: "Telkom Turangga - Telkom Cijawura",
+      label: "Telkom Turangga - Telkom Cijawura",
+    },
+    {
+      value: "Telkom Cijawura - Telkom Tegalega",
+      label: "Telkom Cijawura - Telkom Tegalega",
+    },
+    {
+      value: "Telkom Tegalega - Telkom Rajawali",
+      label: "Telkom Tegalega - Telkom Rajawali",
+    },
+    {
+      value: "Telkom Rajawali - Telkom Banjaran",
+      label: "Telkom Rajawali - Telkom Banjaran",
+    },
+    {
+      value: "Telkom Banjaran - Telkom A Yani",
+      label: "Telkom Banjaran - Telkom A Yani",
+    },
+    {
+      value: "Telkom A Yani - Telkom Kopo",
+      label: "Telkom A Yani - Telkom Kopo",
+    },
+    {
+      value: "Telkom Kopo - Telkom Lembang",
+      label: "Telkom Kopo - Telkom Lembang",
+    },
+    {
+      value: "Telkom Lembang - Telkom Gegerkalong",
+      label: "Telkom Lembang - Telkom Gegerkalong",
+    },
+    {
+      value: "Telkom Gegerkalong - Telkom Dago",
+      label: "Telkom Gegerkalong - Telkom Dago",
+    },
+    {
+      value: "Telkom Dago - Telkom Turangga",
+      label: "Telkom Dago - Telkom Turangga",
+    },
+  ];
+  const [selected, setselected] = useState(options[0].value);
   const [data, setdata] = useState({
     packetloss: 0,
     throughput: 0,
@@ -18,6 +65,7 @@ const InputData = () => {
     datetime: "",
     performance: 0,
     quality_of_service: 0,
+    central_Office: "",
   });
 
   const [isSubmit, setisSubmit] = useState(false);
@@ -33,6 +81,15 @@ const InputData = () => {
     setdata((prevState) => ({
       ...prevState,
       [name]: value,
+    }));
+  };
+
+  const handleSelect = (e) => {
+    setselected(e.target.value);
+    console.log(e.target.name);
+    setdata((prevState) => ({
+      ...prevState,
+      central_Office: e.target.value,
     }));
   };
 
@@ -59,6 +116,7 @@ const InputData = () => {
       datetime: "",
       performance: 0,
       quality_of_service: 0,
+      central_Office: options[0].value,
     });
 
     //select form
@@ -104,6 +162,7 @@ const InputData = () => {
       datetime: formattedDateWithCustomReplacement,
       performance,
       maintenanceCount,
+      quality_of_serviceCount: quality_of_service,
       quality_of_service: quality_of_service < 90 ? "Bad" : "Good",
       user: userRef.current,
     }));
@@ -127,12 +186,14 @@ const InputData = () => {
     if (isSubmit) {
       // disable input html
       const input = document.querySelectorAll("input");
+      const select = document.querySelector("select");
+      select.setAttribute("disabled", "disabled");
       input.forEach((item) => {
         item.setAttribute("disabled", "disabled");
       });
     }
   }, [isSubmit]);
-
+  console.log(data, "central_Office data");
   return (
     <div className="px-48 mb-8 relative">
       <div>
@@ -141,7 +202,7 @@ const InputData = () => {
         </h1>
       </div>
       <form className="w-full pt-10" onSubmit={(e) => handleSumbit(e)}>
-        <h1 className="text-2xl font-bold">Performance</h1>
+        <h1 className="text-2xl font-bold">Performance (%)</h1>
         <div className="p-4">
           <div className="mb-2 ">
             <label htmlFor="packetloss" className="font-medium mb-2">
@@ -158,7 +219,7 @@ const InputData = () => {
           </div>
           <div className="mb-2">
             <label htmlFor="throughput" className="font-medium mb-2">
-              Throughput
+              Throughput (kb/s)
             </label>
             <input
               required
@@ -171,7 +232,7 @@ const InputData = () => {
           </div>
           <div className="mb-2 ">
             <label htmlFor="latency" className="font-medium mb-2">
-              Latency
+              Latency (s)
             </label>
             <input
               required
@@ -184,7 +245,7 @@ const InputData = () => {
           </div>
           <div className="mb-2 ">
             <label htmlFor="jitter" className="font-medium mb-2">
-              Jitter
+              Jitter (ms/packet)
             </label>
             <input
               required
@@ -197,7 +258,7 @@ const InputData = () => {
           </div>
         </div>
         {/* maintenance */}
-        <h1 className="text-2xl font-bold">Maintenance</h1>
+        <h1 className="text-2xl font-bold">Maintenance (%)</h1>
         <div className="p-4">
           <div className="mb-2 ">
             <label htmlFor="preventive" className="font-medium mb-2">
@@ -227,7 +288,7 @@ const InputData = () => {
           </div>
         </div>
         {/* Availability */}
-        <h1 className="text-2xl font-bold">Availability</h1>
+        <h1 className="text-2xl font-bold">Availability (%)</h1>
         <div className="p-4">
           <div className="mb-2 ">
             <label htmlFor="availability" className="font-medium mb-2">
@@ -265,7 +326,7 @@ const InputData = () => {
         <div className="p-4">
           <div className="mb-2 ">
             <label htmlFor="ber" className="font-medium mb-2">
-              Bit Error Rate
+              Bit Error Rate (bit)
             </label>
             <input
               onChange={(e) => handleChange(e)}
@@ -277,10 +338,43 @@ const InputData = () => {
             />
           </div>
         </div>
+        <h1 className="text-2xl font-bold">Central Office</h1>
+        <div className="p-4 mb-4">
+          <div className="mb-2 ">
+            <label htmlFor="centralOffice" className="font-medium mb-2">
+              Central Office
+            </label>
+            <select
+              name="central_Office"
+              id="centralOffice"
+              className="w-full p-2 border-2 border-gray-400 rounded-md focus:outline-none focus:border-gray-600 bg-white"
+              value={selected}
+              onChange={(e) => handleSelect(e)}
+              required
+            >
+              {options.map((option) =>
+                option.value === "default" ? (
+                  <option
+                    value={option.value}
+                    key={option.value}
+                    disabled
+                    selected
+                  >
+                    {option.label}
+                  </option>
+                ) : (
+                  <option value={option.value} key={option.value}>
+                    {option.label}
+                  </option>
+                )
+              )}
+            </select>
+          </div>
+        </div>
         <p className={isSubmit ? "text-red-600 text-center py-3" : "hidden"}>
           Silahkan close Pop up untuk melakukan input data baru !
         </p>
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-4">
           <button
             className={isSubmit ? "hidden" : "w-20 p-1 m-0 bg-[#555]"}
             type="submit"
@@ -346,6 +440,13 @@ const InputData = () => {
               </td>
               <td>:</td>
               <td>{data.quality_of_service}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Central Office</strong>
+              </td>
+              <td>:</td>
+              <td>{data.central_Office}</td>
             </tr>
             <tr>
               <td>

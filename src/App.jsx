@@ -7,6 +7,7 @@ import About from "./components/About";
 import Data from "./components/Data";
 import Formula from "./components/Formula";
 import InputData from "./components/InputData";
+import Table from "./components/Table";
 const App = () => {
   return (
     <Routes>
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="data" element={<Data />} />
         <Route path="formula" element={<Formula />} />
         <Route path="inputData" element={<InputData />} />
+        <Route path="table/:id" element={<Table />} />
       </Route>
     </Routes>
   );

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { IoMdArrowDroprightCircle } from "react-icons/io";
 import Data from "./components/Data";
 import About from "./components/About";
 import Formula from "./components/Formula";
 import InputData from "./components/InputData";
+import Table from "./components/Table";
 const Dashboard = () => {
   const navigate = useNavigate();
   const [sideBar, setSideBar] = useState(true);
@@ -82,6 +83,16 @@ const Dashboard = () => {
             {location.pathname === "/dashboard/about" && <About />}
             {location.pathname === "/dashboard/formula" && <Formula />}
             {location.pathname === "/dashboard/inputData" && <InputData />}
+            {location.pathname === "/dashboard/table/0" && <Table />}
+            {location.pathname === "/dashboard/table/1" && <Table />}
+            {location.pathname === "/dashboard/table/2" && <Table />}
+            {location.pathname === "/dashboard/table/3" && <Table />}
+            {location.pathname === "/dashboard/table/4" && <Table />}
+            {location.pathname === "/dashboard/table/5" && <Table />}
+            {location.pathname === "/dashboard/table/6" && <Table />}
+            {location.pathname === "/dashboard/table/7" && <Table />}
+            {location.pathname === "/dashboard/table/8" && <Table />}
+            {location.pathname === "/dashboard/table/9" && <Table />}
           </div>
         </div>
       </div>
