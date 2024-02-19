@@ -46,9 +46,9 @@ const Data = () => {
   console.log(data);
 
   return (
-    <>
+    <div className="grid grid-flow-row grid-cols-2 gap-4">
       <div
-        className="text-center py-10 px-5 border mb-10 cursor-pointer"
+        className="text-center py-10 px-5 border border-black mb-10 cursor-pointer"
         onClick={() => navigate("/dashboard/table/0")}
       >
         <ChartComp
@@ -57,7 +57,7 @@ const Data = () => {
         />
       </div>
       <div
-        className="text-center py-10 px-5 border mb-10 cursor-pointer"
+        className="text-center py-10 px-5 border mb-10 border-black cursor-pointer"
         onClick={() => navigate("/dashboard/table/1")}
       >
         <ChartComp
@@ -66,7 +66,7 @@ const Data = () => {
         />
       </div>
       <div
-        className="text-center py-10 px-5 border mb-10 cursor-pointer"
+        className="text-center py-10 px-5 border mb-10 border-black cursor-pointer"
         onClick={() => navigate("/dashboard/table/2")}
       >
         <ChartComp
@@ -75,7 +75,7 @@ const Data = () => {
         />
       </div>
       <div
-        className="text-center py-10 px-5 border mb-10 cursor-pointer"
+        className="text-center py-10 px-5 border mb-10 border-black cursor-pointer"
         onClick={() => navigate("/dashboard/table/3")}
       >
         <ChartComp
@@ -84,7 +84,7 @@ const Data = () => {
         />
       </div>
       <div
-        className="text-center py-10 px-5 border mb-10 cursor-pointer"
+        className="text-center py-10 px-5 border mb-10 border-black cursor-pointer"
         onClick={() => navigate("/dashboard/table/4")}
       >
         <ChartComp
@@ -93,13 +93,13 @@ const Data = () => {
         />
       </div>
       <div
-        className="text-center py-10 px-5 border mb-10 cursor-pointer"
+        className="text-center py-10 px-5 border mb-10 border-black cursor-pointer"
         onClick={() => navigate("/dashboard/table/5")}
       >
         <ChartComp name={"Telkom A Yani - Telkom Kopo"} color={"#064FF0"} />
       </div>
       <div
-        className="text-center py-10 px-5 border mb-10 cursor-pointer"
+        className="text-center py-10 px-5 border mb-10 border-black cursor-pointer"
         onClick={() => navigate("/dashboard/table/6")}
       >
         <ChartComp
@@ -108,7 +108,7 @@ const Data = () => {
         />
       </div>
       <div
-        className="text-center py-10 px-5 border mb-10 cursor-pointer"
+        className="text-center py-10 px-5 border mb-10 border-black cursor-pointer"
         onClick={() => navigate("/dashboard/table/7")}
       >
         <ChartComp
@@ -117,7 +117,7 @@ const Data = () => {
         />
       </div>
       <div
-        className="text-center py-10 px-5 border mb-10 cursor-pointer"
+        className="text-center py-10 px-5 border mb-10 border-black cursor-pointer"
         onClick={() => navigate("/dashboard/table/8")}
       >
         <ChartComp
@@ -126,12 +126,12 @@ const Data = () => {
         />
       </div>
       <div
-        className="text-center py-10 px-5 border mb-10 cursor-pointer"
+        className="text-center py-10 px-5 border mb-10 border-black cursor-pointer"
         onClick={() => navigate("/dashboard/table/9")}
       >
         <ChartComp name={"Telkom Dago - Telkom Turangga"} color={"#064FF0"} />
       </div>
-    </>
+    </div>
   );
 };
 

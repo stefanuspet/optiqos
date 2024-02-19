@@ -93,80 +93,30 @@ const Table = () => {
       <table className="w-full table-auto border text-center">
         <thead>
           <tr className="border">
-            <th rowSpan={3} className="border">
-              SIM
-            </th>
-            <th rowSpan={3} className="border">
-              Avail
-            </th>
-            <th rowSpan={2} colSpan={3} className="border">
-              Performance
-            </th>
-            <th rowSpan={2} colSpan={2} className="border">
-              Maintenance
-            </th>
-            <th rowSpan={3} className="border">
-              Nilai Avail
-            </th>
-            <th rowSpan={2} colSpan={3} className="border">
-              Nilai Performance
-            </th>
-            <th rowSpan={2} colSpan={2} className="border">
-              Nilai Maintenance
-            </th>
-            <th className="border">AVAIL</th>
-            <th className="border">PRFM</th>
-            <th className="border">MNTC</th>
-            <th rowSpan={3} className="border">
-              SPM Max
-            </th>
-            <th rowSpan={3} className="border">
-              Action
-            </th>
-          </tr>
-          <tr>
-            <th className="border">80%</th>
-            <th className="border">10%</th>
-            <th className="border">10%</th>
-          </tr>
-          <tr>
-            <th className="border">Capacity</th>
+            <th className="border">No</th>
+            <th className="border">User</th>
+            <th className="border">Date time</th>
+            <th className="border">Availability</th>
             <th className="border">BER</th>
-            <th className="border">L</th>
-            <th className="border">PM</th>
-            <th className="border">TTR</th>
             <th className="border">Capacity</th>
-            <th className="border">BER</th>
-            <th className="border">L</th>
-            <th className="border">PM</th>
-            <th className="border">TTR</th>
-            <th className="border">-</th>
-            <th className="border">-</th>
-            <th className="border">-</th>
+            <th className="border">Maintenance</th>
+            <th className="border">Performance</th>
+            <th className="border">Qos</th>
+            <th className="border">Action</th>
           </tr>
         </thead>
         <tbody>
           {datas.map((data, index) => (
             <tr key={index}>
               <td className="border">{index + 1}</td>
-              <td className="border">{data.availability}%</td>
-              <td className="border">{data.capacity}</td>
-              <td className="border">{data.ber}</td>
-              <td className="border">{data.latency}</td>
-              <td className="border">{data.preventive}</td>
-              <td className="border">{data.maintenance}</td>
-              <td className="border">{data.availability}%</td>
-              <td className="border">{data.capacity}%</td>
-              <td className="border">{data.ber}%</td>
-              <td className="border">{data.latency}%</td>
-              <td className="border">{data.preventive}%</td>
-              <td className="border">{data.maintenance}%</td>
+              <td className="border">{data.user}</td>
+              <td className="border">{data.datetime}</td>
               <td className="border">{data.availability}</td>
-              <td className="border">{data.performance}</td>
+              <td className="border">{data.ber}</td>
+              <td className="border">{data.capacity}</td>
               <td className="border">{data.maintenance}</td>
-              <td className="border">
-                {data.quality_of_serviceCount.toFixed(0)}
-              </td>
+              <td className="border">{data.performance}</td>
+              <td className="border">{data.quality_of_service}</td>
               <td className="border p-1">
                 <button
                   className="bg-red-800 p-1"
