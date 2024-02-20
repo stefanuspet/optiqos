@@ -97,6 +97,9 @@ const InputData = () => {
     setisSubmit(false);
     // reset input html
     const input = document.querySelectorAll("input");
+    const select = document.querySelector("select");
+    setselected(options[0].value);
+    select.removeAttribute("disabled");
     input.forEach((item) => {
       item.removeAttribute("disabled");
       item.value = "";
@@ -262,7 +265,7 @@ const InputData = () => {
         <div className="p-4">
           <div className="mb-2 ">
             <label htmlFor="preventive" className="font-medium mb-2">
-              Preventive Maintenance
+              Preventive Maintenance (hours)
             </label>
             <input
               required
@@ -275,7 +278,7 @@ const InputData = () => {
           </div>
           <div className="mb-2">
             <label htmlFor="maintenance" className="font-medium mb-2">
-              Maintenance
+              Maintenance (hours)
             </label>
             <input
               required
@@ -334,6 +337,7 @@ const InputData = () => {
               type="number"
               name="ber"
               id="ber"
+              step={0.00001}
               className="w-full p-1 border-2 border-gray-400 rounded-md focus:outline-none focus:border-gray-600"
             />
           </div>

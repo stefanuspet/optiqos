@@ -101,7 +101,7 @@ const Table = () => {
             <th className="border">Capacity</th>
             <th className="border">Maintenance</th>
             <th className="border">Performance</th>
-            <th className="border">Qos</th>
+            <th className="border">SPM Max</th>
             <th className="border">Action</th>
           </tr>
         </thead>
